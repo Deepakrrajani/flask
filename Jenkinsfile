@@ -14,8 +14,13 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                // In a real-world scenario, you would deploy to your server here
-                sh 'echo "Deployment step"'
+                // Create deployment directory if it doesn't exist
+                sh 'ssh ec2-user@3.83.3.224 "mkdir -p /home/ec2-user/flask_app"'
+                // Deploy the Flask application files to the deployment directory
+                sh 'scp main.py ec2-user@3.83.3.224:/home/ec2-user/flask_app'
+                // You may need to copy other necessary files as well
+                // Start the Flask application
+                sh 'ssh ec2-user@3.83.3.224 "cd /home/ec2-user/flask_app && python main.py &"'
             }
         }
     }
