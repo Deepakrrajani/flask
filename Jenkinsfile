@@ -22,6 +22,7 @@ pipeline {
     post {
         always {
             // Clean up steps can be added here
+            echo 'Hello'
         }
         success {
             echo 'Pipeline succeeded! Deploying...'
