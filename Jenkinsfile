@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip install -r flask'
+                sh 'pip install -r requirements.txt'
             }
         }
         stage('Test') {
@@ -14,7 +14,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'echo "Deploying application"'
+                // In a real-world scenario, you would deploy to your server here
+                sh 'echo "Deployment step"'
             }
         }
     }
@@ -22,7 +23,6 @@ pipeline {
     post {
         always {
             // Clean up steps can be added here
-            echo 'Hello'
         }
         success {
             echo 'Pipeline succeeded! Deploying...'
