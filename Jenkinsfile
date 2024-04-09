@@ -14,13 +14,12 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                // Create deployment directory if it doesn't exist
-                sh 'ssh ec2-user@3.83.3.224 "mkdir -p /home/ec2-user/flask_app"'
+            
                 // Deploy the Flask application files to the deployment directory
-                sh 'scp main.py ec2-user@3.83.3.224:/home/ec2-user/flask_app'
+                sh 'scp main.py ec2-user@3.83.3.224:/home/ubuntu/flaskapp'
                 // You may need to copy other necessary files as well
                 // Start the Flask application
-                sh 'ssh ec2-user@3.83.3.224 "cd /home/ec2-user/flask_app && python main.py &"'
+                sh 'ssh ec2-user@3.83.3.224 "cd /home/ubuntu/flaskapp && python main.py &"'
             }
         }
     }
