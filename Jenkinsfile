@@ -15,11 +15,7 @@ pipeline {
         stage('Deploy') {
             steps {
             
-                // Deploy the Flask application files to the deployment directory
-                sh 'scp main.py ec2-user@3.83.3.224:/home/ubuntu/flaskapp'
-                // You may need to copy other necessary files as well
-                // Start the Flask application
-                sh 'ssh ec2-user@3.83.3.224 "cd /home/ubuntu/flaskapp && python main.py &"'
+              
             }
         }
     }
